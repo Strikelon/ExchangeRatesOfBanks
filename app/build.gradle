@@ -20,9 +20,22 @@ android {
     }
 
     buildTypes {
+
+        def API_BASE_URL = "API_BASE_URL"
+        def CONFIG = { k -> "\"${project.properties.get(k)}\"" }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", API_BASE_URL, CONFIG("dev.api.base.url")
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", API_BASE_URL, CONFIG("prod.api.base.url")
         }
     }
 
