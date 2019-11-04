@@ -23,6 +23,10 @@ class MainActivity : MvpAppCompatActivity() {
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
+    private val currentFragment: BaseFragment?
+        get() = supportFragmentManager.findFragmentById(R.id.container) as? BaseFragment
+
+
     private val navigator: Navigator =
         object : SupportAppNavigator(this, supportFragmentManager, R.id.container) {
             override fun setupFragmentTransaction(
@@ -62,5 +66,10 @@ class MainActivity : MvpAppCompatActivity() {
         navigatorHolder.removeNavigator()
         super.onPause()
     }
+
+    override fun onBackPressed() {
+        currentFragment?.onBackPressed() ?: super.onBackPressed()
+    }
+
 
 }
