@@ -1,4 +1,4 @@
-package com.strikalov.exchangeratesofbanks.model
+package com.strikalov.exchangeratesofbanks.model.server
 
 import com.strikalov.exchangeratesofbanks.entity.BankInfo
 import com.strikalov.exchangeratesofbanks.entity.BankOffices

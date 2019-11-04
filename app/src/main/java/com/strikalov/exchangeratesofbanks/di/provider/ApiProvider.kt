@@ -1,7 +1,7 @@
 package com.strikalov.exchangeratesofbanks.di.provider
 
 import com.strikalov.exchangeratesofbanks.BuildConfig
-import com.strikalov.exchangeratesofbanks.model.Api
+import com.strikalov.exchangeratesofbanks.model.server.Api
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

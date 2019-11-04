@@ -1,10 +1,9 @@
 package com.strikalov.exchangeratesofbanks.di
 
 import android.content.Context
-import com.google.gson.Gson
 import com.strikalov.exchangeratesofbanks.di.provider.ApiProvider
 import com.strikalov.exchangeratesofbanks.di.provider.OkHttpClientProvider
-import com.strikalov.exchangeratesofbanks.model.Api
+import com.strikalov.exchangeratesofbanks.model.server.Api
 import com.strikalov.exchangeratesofbanks.model.BanksDataRepository
 import com.strikalov.exchangeratesofbanks.system.AppSchedulers
 import com.strikalov.exchangeratesofbanks.system.SchedulersProvider

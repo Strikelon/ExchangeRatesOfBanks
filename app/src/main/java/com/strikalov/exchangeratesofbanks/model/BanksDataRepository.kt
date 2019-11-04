@@ -1,5 +1,6 @@
 package com.strikalov.exchangeratesofbanks.model
 
+import com.strikalov.exchangeratesofbanks.model.server.Api
 import com.strikalov.exchangeratesofbanks.system.SchedulersProvider
 import javax.inject.Inject
 

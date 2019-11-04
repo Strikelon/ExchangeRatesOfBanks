@@ -1,7 +1,7 @@
 package com.strikalov.exchangeratesofbanks.di.provider
 
 import com.strikalov.exchangeratesofbanks.BuildConfig
-import com.strikalov.exchangeratesofbanks.model.EncodingInterceptor
+import com.strikalov.exchangeratesofbanks.model.server.EncodingInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Inject
