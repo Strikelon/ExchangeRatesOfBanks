@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">ExchangeRatesOfBanks</string>
+    <string name="app_name">Курсы валют</string>
+    
+    <!--item_bank_exchange_rate-->
+    <string name="purchase">Покупка</string>
+    <string name="sale">Продажа</string>
 </resources>
