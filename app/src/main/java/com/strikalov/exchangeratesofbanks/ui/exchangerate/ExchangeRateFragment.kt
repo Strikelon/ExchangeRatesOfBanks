@@ -1,6 +1,9 @@
 package com.strikalov.exchangeratesofbanks.ui.exchangerate
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.core.view.isVisible
@@ -46,6 +49,7 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Toothpick.inject(this, scope)
+        setHasOptionsMenu(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,6 +86,25 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
         scroll_up_fab_button.setOnClickListener {
             scroll_up_fab_button.hide()
             presenter.onScrollUpFabButtonClick()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.exchange_rate_menu, menu)
+        super.onCreateOptionsMenu(menu,inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+
+            R.id.refresh_exchange_rate -> {
+                presenter.onRefreshExchangeRate()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
     }
 

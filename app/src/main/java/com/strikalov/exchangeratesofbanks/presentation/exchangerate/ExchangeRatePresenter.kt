@@ -60,4 +60,9 @@ class ExchangeRatePresenter @Inject constructor(
         viewState.scrollRecyclerViewToPosition(0)
     }
 
+    fun onRefreshExchangeRate() {
+        viewState.hideRecyclerView()
+        downloadExchangeRates()
+    }
+
 }
