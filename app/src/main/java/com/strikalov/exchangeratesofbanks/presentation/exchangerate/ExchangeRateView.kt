@@ -1,5 +1,7 @@
 package com.strikalov.exchangeratesofbanks.presentation.exchangerate
 
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import com.strikalov.exchangeratesofbanks.entity.ExchangeRates
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
@@ -18,4 +20,8 @@ interface ExchangeRateView : MvpView {
     fun hideRecyclerView()
 
     fun updateExchangeRates(data: List<ExchangeRates.ExchangeRate>)
+
+    fun showSnackBarMessage(@StringRes messageId : Int)
+
+    fun scrollRecyclerViewToPosition(position: Int)
 }

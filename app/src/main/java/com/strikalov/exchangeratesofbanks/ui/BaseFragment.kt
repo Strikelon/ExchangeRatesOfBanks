@@ -41,6 +41,7 @@ abstract class BaseFragment : MvpAppCompatFragment(){
         savedInstanceState: Bundle?
     ) = inflater.inflate(layoutRes, container, false)
 
+    
 
     open fun onBackPressed() {}
 

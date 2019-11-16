@@ -1,5 +1,6 @@
 package com.strikalov.exchangeratesofbanks.presentation.exchangerate
 
+import com.strikalov.exchangeratesofbanks.R
 import com.strikalov.exchangeratesofbanks.entity.ExchangeRates
 import com.strikalov.exchangeratesofbanks.model.BanksDataRepository
 import com.strikalov.exchangeratesofbanks.presentation.BasePresenter
@@ -34,6 +35,7 @@ class ExchangeRatePresenter @Inject constructor(
                 },
                 {
                     Timber.tag("MyTag").i("downloadExchangeRates() error : $it")
+                    viewState.showSnackBarMessage(R.string.network_connection_error)
                 }
             ).addToCompositeDisposable()
     }
@@ -52,6 +54,10 @@ class ExchangeRatePresenter @Inject constructor(
 
     fun onBackPressed() {
         router.exit()
+    }
+
+    fun onScrollUpFabButtonClick() {
+        viewState.scrollRecyclerViewToPosition(0)
     }
 
 }

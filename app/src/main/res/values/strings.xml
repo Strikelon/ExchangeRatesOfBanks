@@ -4,4 +4,5 @@
     <!--item_bank_exchange_rate-->
     <string name="purchase">Покупка</string>
     <string name="sale">Продажа</string>
+    <string name="network_connection_error">Ошибка соединения сети</string>
 </resources>
