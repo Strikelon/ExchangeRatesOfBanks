@@ -2,7 +2,7 @@ package com.strikalov.exchangeratesofbanks.ui.exchangerate.epoxy
 
 import android.content.Context
 import android.view.View
-import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
@@ -12,7 +12,7 @@ import com.strikalov.exchangeratesofbanks.R
 import kotlinx.android.synthetic.main.item_bank_exchange_rate.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
-class BankExchangeRateView(context: Context): CardView(context) {
+class BankExchangeRateView(context: Context): ConstraintLayout(context) {
 
     init {
         View.inflate(context, R.layout.item_bank_exchange_rate, this)
