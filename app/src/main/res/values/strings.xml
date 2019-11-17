@@ -6,4 +6,10 @@
     <string name="sale">Продажа</string>
     <string name="network_connection_error">Ошибка соединения сети</string>
     <string name="refresh_exchange_rate">Обновить курсы</string>
+    <string name="bank_sorting">Сортировка банков</string>
+    <string name="dollar">Доллар</string>
+    <string name="euro">Евро</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="sort">Сортировать</string>
 </resources>
