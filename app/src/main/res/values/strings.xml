@@ -12,4 +12,5 @@
     <string name="min">Min</string>
     <string name="max">Max</string>
     <string name="sort">Сортировать</string>
+    <string name="cancel_sort">Отменить</string>
 </resources>

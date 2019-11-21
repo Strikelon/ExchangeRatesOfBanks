@@ -5,22 +5,24 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.annotation.IdRes
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.epoxy.EpoxyItemSpacingDecorator
 import com.strikalov.exchangeratesofbanks.R
 import com.strikalov.exchangeratesofbanks.di.DI
+import com.strikalov.exchangeratesofbanks.entity.ActionEnum
+import com.strikalov.exchangeratesofbanks.entity.CurrencyEnum
 import com.strikalov.exchangeratesofbanks.entity.ExchangeRates
+import com.strikalov.exchangeratesofbanks.entity.ExtremumEnum
 import com.strikalov.exchangeratesofbanks.presentation.exchangerate.ExchangeRatePresenter
 import com.strikalov.exchangeratesofbanks.presentation.exchangerate.ExchangeRateView
 import com.strikalov.exchangeratesofbanks.showSnackMessage
 import com.strikalov.exchangeratesofbanks.ui.BaseFragment
 import com.strikalov.exchangeratesofbanks.ui.exchangerate.epoxy.BankExchangeRateController
 import kotlinx.android.synthetic.main.fragment_exchange_rate.*
+import kotlinx.android.synthetic.main.layout_bank_sorting.*
+import kotlinx.android.synthetic.main.layout_bank_sorting_controller.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import timber.log.Timber
 import toothpick.Toothpick
 
 class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
@@ -55,6 +57,10 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupSortingController()
+        controller.addModelBuildListener {
+            recycler_view.scrollToPosition(0)
+        }
     }
 
     private fun setupRecyclerView() {
@@ -86,6 +92,35 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
         scroll_up_fab_button.setOnClickListener {
             scroll_up_fab_button.hide()
             presenter.onScrollUpFabButtonClick()
+        }
+    }
+
+    private fun setupSortingController() {
+        sorting_open_close_button.setOnClickListener {
+            presenter.onSortingControllerButtonClick()
+        }
+
+        sort_button.setOnClickListener {
+            val currency = when (currency_radio_group.checkedRadioButtonId) {
+                R.id.radio_button_dollar -> { CurrencyEnum.DOLLAR }
+                R.id.radio_button_euro -> { CurrencyEnum.EURO }
+                else -> { CurrencyEnum.NONE }
+            }
+            val action = when (purchase_sale_radio_group.checkedRadioButtonId) {
+                R.id.radio_button_purchase -> { ActionEnum.PURCHASE }
+                R.id.radio_button_sale -> { ActionEnum.SALE }
+                else -> { ActionEnum.NONE }
+            }
+            val extremum = when (min_max_radio_group.checkedRadioButtonId) {
+                R.id.radio_button_max -> { ExtremumEnum.MAX }
+                R.id.radio_button_min -> { ExtremumEnum.MIN }
+                else -> { ExtremumEnum.NONE }
+            }
+            presenter.onSortButtonClick(currency, action, extremum)
+        }
+
+        cancel_sort_button.setOnClickListener {
+            presenter.onCancelSortButtonClick()
         }
     }
 
@@ -138,5 +173,21 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
 
     override fun scrollRecyclerViewToPosition(position: Int) {
         recycler_view.scrollToPosition(position)
+    }
+
+    override fun openSortingController() {
+        sorting_open_close_button.setImageResource(R.drawable.ic_keyboard_arrow_up_black_24dp)
+        bank_sorting_controller.visibility = View.VISIBLE
+    }
+
+    override fun closeSortingController() {
+        sorting_open_close_button.setImageResource(R.drawable.ic_arrow_down_black_24dp)
+        bank_sorting_controller.visibility = View.GONE
+    }
+
+    override fun resetSortRadioButtons() {
+        currency_radio_group.check(R.id.radio_button_dollar)
+        purchase_sale_radio_group.check(R.id.radio_button_purchase)
+        min_max_radio_group.check(R.id.radio_button_max)
     }
 }
