@@ -190,4 +190,12 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
         purchase_sale_radio_group.check(R.id.radio_button_purchase)
         min_max_radio_group.check(R.id.radio_button_max)
     }
+
+    override fun showBankSorting() {
+        bank_sorting.visibility = View.VISIBLE
+    }
+
+    override fun hideBankSorting() {
+        bank_sorting.visibility = View.GONE
+    }
 }

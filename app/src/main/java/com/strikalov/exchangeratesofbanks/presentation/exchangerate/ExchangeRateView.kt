@@ -19,6 +19,10 @@ interface ExchangeRateView : MvpView {
 
     fun hideRecyclerView()
 
+    fun showBankSorting()
+
+    fun hideBankSorting()
+
     fun updateExchangeRates(data: List<ExchangeRates.ExchangeRate>)
 
     @StateStrategyType(SkipStrategy::class)

@@ -69,6 +69,7 @@ class ExchangeRatePresenter @Inject constructor(
         }
 
         viewState.updateExchangeRates(currentExchangeRatesList)
+        viewState.showBankSorting()
         viewState.showRecyclerView()
     }
 
@@ -168,6 +169,7 @@ class ExchangeRatePresenter @Inject constructor(
 
     fun onRefreshExchangeRate() {
         viewState.hideRecyclerView()
+        viewState.hideBankSorting()
         downloadExchangeRates()
     }
 
