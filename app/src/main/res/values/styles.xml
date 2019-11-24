@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="RadioButtonBlueStyle">
+        <item name="buttonTint">@color/exchange_rate_color_background</item>
+    </style>
+
+    <style name="SortButtonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="backgroundTint">@color/exchange_rate_color_background</item>
+    </style>
+
 </resources>

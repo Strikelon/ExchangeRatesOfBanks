@@ -5,6 +5,7 @@ import android.os.Looper
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.strikalov.exchangeratesofbanks.R
+import com.strikalov.exchangeratesofbanks.Screens
 import com.strikalov.exchangeratesofbanks.di.DI
 import moxy.MvpAppCompatActivity
 import ru.terrakok.cicerone.Navigator
@@ -55,6 +56,7 @@ class MainActivity : MvpAppCompatActivity() {
         Toothpick.inject(this, Toothpick.openScope(DI.APP_SCOPE))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        router.newRootScreen(Screens.ExchangeRateScreen)
     }
 
     override fun onResumeFragments() {
