@@ -13,4 +13,7 @@
     <string name="max">Max</string>
     <string name="sort">Сортировать</string>
     <string name="cancel_sort">Отменить</string>
+    <string name="site">Сайт:</string>
+    <string name="phone_number">Телефон:</string>
+    <string name="address">Адрес:</string>
 </resources>

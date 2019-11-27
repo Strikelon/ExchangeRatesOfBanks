@@ -1,6 +1,7 @@
 package com.strikalov.exchangeratesofbanks.presentation.exchangerate
 
 import com.strikalov.exchangeratesofbanks.R
+import com.strikalov.exchangeratesofbanks.Screens
 import com.strikalov.exchangeratesofbanks.entity.ActionEnum
 import com.strikalov.exchangeratesofbanks.entity.CurrencyEnum
 import com.strikalov.exchangeratesofbanks.entity.ExchangeRates
@@ -153,6 +154,7 @@ class ExchangeRatePresenter @Inject constructor(
 
     fun onInfoClick(exchangeRate: ExchangeRates.ExchangeRate) {
         Timber.tag("MyTag").i("onInfoClick : $exchangeRate")
+        router.navigateTo(Screens.InfoScreen(exchangeRate.idBank))
     }
 
     fun onLocationClick(exchangeRate: ExchangeRates.ExchangeRate) {
