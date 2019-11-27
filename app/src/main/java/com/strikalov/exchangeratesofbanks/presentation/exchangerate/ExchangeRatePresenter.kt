@@ -154,7 +154,7 @@ class ExchangeRatePresenter @Inject constructor(
 
     fun onInfoClick(exchangeRate: ExchangeRates.ExchangeRate) {
         Timber.tag("MyTag").i("onInfoClick : $exchangeRate")
-        router.navigateTo(Screens.InfoScreen(exchangeRate.idBank))
+        router.navigateTo(Screens.InfoScreen(exchangeRate.idBank, exchangeRate.bankName, exchangeRate.bankLogoLink))
     }
 
     fun onLocationClick(exchangeRate: ExchangeRates.ExchangeRate) {

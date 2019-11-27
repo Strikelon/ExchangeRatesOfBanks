@@ -11,8 +11,8 @@ object Screens {
         override fun getFragment() = ExchangeRateFragment()
     }
 
-    data class InfoScreen(val idBank: Int) : SupportAppScreen() {
-        override fun getFragment() = InfoFragment.newInstance(idBank)
+    data class InfoScreen(val idBank: Int, val bankName: String, val bankLogoLink: String) : SupportAppScreen() {
+        override fun getFragment() = InfoFragment.newInstance(idBank, bankName, bankLogoLink)
     }
 
 }
