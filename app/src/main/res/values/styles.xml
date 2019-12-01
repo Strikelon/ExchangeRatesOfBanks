@@ -16,4 +16,9 @@
         <item name="backgroundTint">@color/exchange_rate_color_background</item>
     </style>
 
+    <style name="BankInfoTitleStyle">
+        <item name="android:textColor">@color/title_color</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
