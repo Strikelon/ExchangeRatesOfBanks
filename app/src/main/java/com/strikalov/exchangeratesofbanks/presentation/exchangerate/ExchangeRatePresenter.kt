@@ -34,6 +34,7 @@ class ExchangeRatePresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        viewState.setTitle(R.string.app_name)
         downloadExchangeRates()
     }
 
@@ -159,6 +160,7 @@ class ExchangeRatePresenter @Inject constructor(
 
     fun onLocationClick(exchangeRate: ExchangeRates.ExchangeRate) {
         Timber.tag("MyTag").i("onLocationClick : $exchangeRate")
+        router.navigateTo(Screens.LocationScreen(exchangeRate.idBank, exchangeRate.bankName))
     }
 
     fun onBackPressed() {

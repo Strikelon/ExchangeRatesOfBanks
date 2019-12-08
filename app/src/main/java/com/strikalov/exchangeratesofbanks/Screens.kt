@@ -1,8 +1,8 @@
 package com.strikalov.exchangeratesofbanks
 
-import androidx.fragment.app.Fragment
 import com.strikalov.exchangeratesofbanks.ui.exchangerate.ExchangeRateFragment
 import com.strikalov.exchangeratesofbanks.ui.info.InfoFragment
+import com.strikalov.exchangeratesofbanks.ui.location.LocationFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 object Screens {
@@ -15,4 +15,7 @@ object Screens {
         override fun getFragment() = InfoFragment.newInstance(idBank, bankName, bankLogoLink)
     }
 
+    data class LocationScreen(val idBank: Int, val bankName: String) : SupportAppScreen() {
+        override fun getFragment() = LocationFragment.newInstance(idBank, bankName)
+    }
 }

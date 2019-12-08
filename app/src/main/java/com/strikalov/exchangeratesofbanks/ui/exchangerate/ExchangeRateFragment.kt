@@ -198,4 +198,8 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
     override fun hideBankSorting() {
         bank_sorting.visibility = View.GONE
     }
+
+    override fun setTitle(id: Int) {
+        activity?.title = getString(id)
+    }
 }
