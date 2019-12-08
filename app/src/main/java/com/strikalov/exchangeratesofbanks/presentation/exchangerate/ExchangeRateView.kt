@@ -36,4 +36,6 @@ interface ExchangeRateView : MvpView {
 
     @StateStrategyType(SkipStrategy::class)
     fun resetSortRadioButtons()
+
+    fun setTitle(id: Int)
 }

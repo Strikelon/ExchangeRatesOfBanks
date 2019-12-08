@@ -56,6 +56,9 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
 
+    //Google maps
+    implementation "com.google.android.gms:play-services-maps:16.1.0"
+
     // Moxy
     implementation "com.github.moxy-community:moxy:$moxyXVersion"
     implementation "com.github.moxy-community:moxy-androidx:$moxyXVersion"
