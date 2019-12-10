@@ -51,9 +51,9 @@ class BankExchangeRateView(context: Context): ConstraintLayout(context) {
     }
 
     @CallbackProp
-    fun onCalculatorButtonClick(clickListener : (() -> Unit)?) {
+    fun onCalculatorButtonClick(clickListener : ((View) -> Unit)?) {
         calculator_button.setOnClickListener {
-            clickListener?.invoke()
+            clickListener?.invoke(it)
         }
     }
 

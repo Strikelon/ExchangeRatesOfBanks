@@ -16,4 +16,6 @@
     <string name="site">Сайт:</string>
     <string name="phone_number">Телефон:</string>
     <string name="address">Адрес:</string>
+    <string name="conversion_dollar">Конвертация Доллары</string>
+    <string name="conversion_euro">Конвертация Евро</string>
 </resources>
