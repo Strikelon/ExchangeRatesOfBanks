@@ -3,6 +3,7 @@ package com.strikalov.exchangeratesofbanks.ui.exchangerate
 import android.os.Bundle
 import android.view.*
 import android.widget.PopupMenu
+import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.epoxy.EpoxyItemSpacingDecorator
 import com.strikalov.exchangeratesofbanks.R
@@ -15,6 +16,7 @@ import com.strikalov.exchangeratesofbanks.presentation.exchangerate.ExchangeRate
 import com.strikalov.exchangeratesofbanks.presentation.exchangerate.ExchangeRateView
 import com.strikalov.exchangeratesofbanks.showSnackMessage
 import com.strikalov.exchangeratesofbanks.ui.BaseFragment
+import com.strikalov.exchangeratesofbanks.ui.exchangerate.conversion.CurrencyConversionBottomSheetDialog
 import com.strikalov.exchangeratesofbanks.ui.exchangerate.epoxy.BankExchangeRateController
 import kotlinx.android.synthetic.main.fragment_exchange_rate.*
 import kotlinx.android.synthetic.main.layout_bank_sorting.*
@@ -46,6 +48,8 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
 
     private lateinit var itemOffsetDecoration: RecyclerView.ItemDecoration
     private var onClickCalculatorView: View? = null
+
+    private lateinit var currencyConversionBottomSheetDialog : CurrencyConversionBottomSheetDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -230,5 +234,16 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
             }
             popupMenu.show()
         }
+    }
+
+    override fun showCurrencyConversionBottomSheetDialog(bankName: String, @StringRes currencyId: Int, coefficientPurchase: Double, coefficientSale: Double) {
+        currencyConversionBottomSheetDialog =
+            CurrencyConversionBottomSheetDialog.newInstance(
+                bankName = bankName,
+                currency = getString(currencyId),
+                coefficientPurchase = coefficientPurchase,
+                coefficientSale = coefficientSale
+            )
+        currencyConversionBottomSheetDialog.show(fragmentManager!!, currencyConversionBottomSheetDialog.tag)
     }
 }

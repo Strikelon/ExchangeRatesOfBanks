@@ -42,4 +42,7 @@ interface ExchangeRateView : MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showPopupMenu(exchangeRate: ExchangeRates.ExchangeRate)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showCurrencyConversionBottomSheetDialog(bankName: String, @StringRes currencyId: Int, coefficientPurchase: Double, coefficientSale: Double)
 }

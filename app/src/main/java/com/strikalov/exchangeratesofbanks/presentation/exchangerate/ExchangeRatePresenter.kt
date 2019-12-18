@@ -156,10 +156,12 @@ class ExchangeRatePresenter @Inject constructor(
 
     fun onConversionDollarClick(exchangeRate: ExchangeRates.ExchangeRate) {
         Timber.tag("ExchangeRatePresenter").i("onConversionDollarClick : $exchangeRate")
+        viewState.showCurrencyConversionBottomSheetDialog(exchangeRate.bankName, R.string.dollar, exchangeRate.dollarPurchase, exchangeRate.dollarSale)
     }
 
     fun onConversionEuroClick(exchangeRate: ExchangeRates.ExchangeRate) {
         Timber.tag("ExchangeRatePresenter").i("onConversionEuroClick : $exchangeRate")
+        viewState.showCurrencyConversionBottomSheetDialog(exchangeRate.bankName, R.string.euro, exchangeRate.euroPurchase, exchangeRate.euroSale)
     }
 
     fun onInfoClick(exchangeRate: ExchangeRates.ExchangeRate) {
