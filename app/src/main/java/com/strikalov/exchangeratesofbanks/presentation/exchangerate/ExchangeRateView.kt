@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import com.strikalov.exchangeratesofbanks.entity.ExchangeRates
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.SkipStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
@@ -38,4 +39,10 @@ interface ExchangeRateView : MvpView {
     fun resetSortRadioButtons()
 
     fun setTitle(id: Int)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showPopupMenu(exchangeRate: ExchangeRates.ExchangeRate)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showCurrencyConversionBottomSheetDialog(bankName: String, @StringRes currencyId: Int, coefficientPurchase: Double, coefficientSale: Double)
 }

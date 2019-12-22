@@ -9,6 +9,7 @@
     <string name="bank_sorting">Сортировка банков</string>
     <string name="dollar">Доллар</string>
     <string name="euro">Евро</string>
+    <string name="ruble">Рубль</string>
     <string name="min">Min</string>
     <string name="max">Max</string>
     <string name="sort">Сортировать</string>
@@ -16,4 +17,6 @@
     <string name="site">Сайт:</string>
     <string name="phone_number">Телефон:</string>
     <string name="address">Адрес:</string>
+    <string name="conversion_dollar">Конвертация Доллары</string>
+    <string name="conversion_euro">Конвертация Евро</string>
 </resources>

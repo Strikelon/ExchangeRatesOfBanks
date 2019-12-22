@@ -150,7 +150,18 @@ class ExchangeRatePresenter @Inject constructor(
     }
 
     fun onCalculatorClick(exchangeRate: ExchangeRates.ExchangeRate) {
-        Timber.tag("MyTag").i("onCalculatorClick : $exchangeRate")
+        Timber.tag("ExchangeRatePresenter").i("onCalculatorClick : $exchangeRate")
+        viewState.showPopupMenu(exchangeRate)
+    }
+
+    fun onConversionDollarClick(exchangeRate: ExchangeRates.ExchangeRate) {
+        Timber.tag("ExchangeRatePresenter").i("onConversionDollarClick : $exchangeRate")
+        viewState.showCurrencyConversionBottomSheetDialog(exchangeRate.bankName, R.string.dollar, exchangeRate.dollarPurchase, exchangeRate.dollarSale)
+    }
+
+    fun onConversionEuroClick(exchangeRate: ExchangeRates.ExchangeRate) {
+        Timber.tag("ExchangeRatePresenter").i("onConversionEuroClick : $exchangeRate")
+        viewState.showCurrencyConversionBottomSheetDialog(exchangeRate.bankName, R.string.euro, exchangeRate.euroPurchase, exchangeRate.euroSale)
     }
 
     fun onInfoClick(exchangeRate: ExchangeRates.ExchangeRate) {

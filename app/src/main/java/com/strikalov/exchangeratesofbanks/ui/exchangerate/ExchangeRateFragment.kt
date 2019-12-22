@@ -1,10 +1,9 @@
 package com.strikalov.exchangeratesofbanks.ui.exchangerate
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import android.widget.PopupMenu
+import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.epoxy.EpoxyItemSpacingDecorator
 import com.strikalov.exchangeratesofbanks.R
@@ -17,6 +16,7 @@ import com.strikalov.exchangeratesofbanks.presentation.exchangerate.ExchangeRate
 import com.strikalov.exchangeratesofbanks.presentation.exchangerate.ExchangeRateView
 import com.strikalov.exchangeratesofbanks.showSnackMessage
 import com.strikalov.exchangeratesofbanks.ui.BaseFragment
+import com.strikalov.exchangeratesofbanks.ui.exchangerate.conversion.CurrencyConversionBottomSheetDialog
 import com.strikalov.exchangeratesofbanks.ui.exchangerate.epoxy.BankExchangeRateController
 import kotlinx.android.synthetic.main.fragment_exchange_rate.*
 import kotlinx.android.synthetic.main.layout_bank_sorting.*
@@ -40,13 +40,16 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
 
     private val controller: BankExchangeRateController by lazy {
         BankExchangeRateController(
-            onCalculatorClickListener = presenter::onCalculatorClick,
+            onCalculatorClickListener = { ex,v -> onCalculatorClick(ex,v) },
             onInfoClickListener = presenter::onInfoClick,
             onLocationClickListener = presenter::onLocationClick
         )
     }
 
     private lateinit var itemOffsetDecoration: RecyclerView.ItemDecoration
+    private var onClickCalculatorView: View? = null
+
+    private lateinit var currencyConversionBottomSheetDialog : CurrencyConversionBottomSheetDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -201,5 +204,46 @@ class ExchangeRateFragment : BaseFragment(), ExchangeRateView {
 
     override fun setTitle(id: Int) {
         activity?.title = getString(id)
+    }
+
+    private fun onCalculatorClick(exchangeRate: ExchangeRates.ExchangeRate, view: View) {
+        onClickCalculatorView = view
+        presenter.onCalculatorClick(exchangeRate)
+    }
+
+    override fun showPopupMenu(exchangeRate: ExchangeRates.ExchangeRate) {
+        onClickCalculatorView?.let {
+            val popupMenu = PopupMenu(requireContext(), onClickCalculatorView)
+            popupMenu.inflate(R.menu.conversion_menu)
+            popupMenu.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.conversion_dollar -> {
+                        presenter.onConversionDollarClick(exchangeRate)
+                        return@setOnMenuItemClickListener true
+                    }
+
+                    R.id.conversion_euro -> {
+                        presenter.onConversionEuroClick(exchangeRate)
+                        return@setOnMenuItemClickListener true
+                    }
+
+                    else -> {
+                        return@setOnMenuItemClickListener false
+                    }
+                }
+            }
+            popupMenu.show()
+        }
+    }
+
+    override fun showCurrencyConversionBottomSheetDialog(bankName: String, @StringRes currencyId: Int, coefficientPurchase: Double, coefficientSale: Double) {
+        currencyConversionBottomSheetDialog =
+            CurrencyConversionBottomSheetDialog.newInstance(
+                bankName = bankName,
+                currency = getString(currencyId),
+                coefficientPurchase = coefficientPurchase,
+                coefficientSale = coefficientSale
+            )
+        currencyConversionBottomSheetDialog.show(fragmentManager!!, currencyConversionBottomSheetDialog.tag)
     }
 }
