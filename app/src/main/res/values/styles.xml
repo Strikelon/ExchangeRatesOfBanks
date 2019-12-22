@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="RadioButtonBlueStyle">
+        <item name="buttonTint">@color/exchange_rate_color_background</item>
+    </style>
+
+    <style name="SortButtonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="backgroundTint">@color/exchange_rate_color_background</item>
+    </style>
+
+    <style name="BankInfoTitleStyle">
+        <item name="android:textColor">@color/title_color</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="FilterBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/FilterModalStyle</item>
+    </style>
+
+    <style name="FilterModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/rounded_bottomsheet_border</item>
+    </style>
+
 </resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RadioGroup
+        android:id="@+id/currency_radio_group"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radio_button_dollar"
+            style="@style/RadioButtonBlueStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/dollar"
+            android:drawableStart="@drawable/flag_america_24_14"
+            android:drawablePadding="8dp" />
+
+        <RadioButton
+            android:id="@+id/radio_button_euro"
+            style="@style/RadioButtonBlueStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/euro"
+            android:drawableStart="@drawable/flag_euro_24_14"
+            android:drawablePadding="8dp" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/purchase_sale_radio_group"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/currency_radio_group"
+        app:layout_constraintEnd_toStartOf="@+id/min_max_radio_group"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radio_button_purchase"
+            style="@style/RadioButtonBlueStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/purchase" />
+
+        <RadioButton
+            android:id="@+id/radio_button_sale"
+            style="@style/RadioButtonBlueStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sale" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/min_max_radio_group"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radio_button_max"
+            style="@style/RadioButtonBlueStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/max" />
+
+        <RadioButton
+            android:id="@+id/radio_button_min"
+            style="@style/RadioButtonBlueStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/min" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/sort_button"
+        style="@style/SortButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sort"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cancel_sort_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/purchase_sale_radio_group" />
+
+    <Button
+        android:id="@+id/cancel_sort_button"
+        style="@style/SortButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_sort"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sort_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
